@@ -1,14 +1,12 @@
-const express = require("express");
-const app = express();
-// const db = require('./models');
-// ++++++++++++++++++++++++++++++ db connection +++++++++++++++++++++
-const mongoose = require('mongoose');
+import  express   from 'express';
+import mongoose from 'mongoose';// Hide Mongoose deprecation warnings
+import {add} from './models/users.js';
+const app=express();
 
-mongoose.connect('mongodb://localhost:27017/biblio').then(()=>{
-    console.log('connact')
+console.log(add(3,2));
+mongoose.connect("mongodb+srv://ismailkun:madarakun0123@hamaiismail.nqf3s2v.mongodb.net/?retryWrites=true&w=majoritymongodb+srv://riadhidir5:bIKlHStd0ezgzaFQ@cluster0.aha4g2i.mongodb.net/Cluster0?retryWrites=true&w=majority").then(()=>{
+app.listen(3000, ()=>{console.log('http://localhost:3000')});
 });
-
-
 
 
 // app.use(express.json());
