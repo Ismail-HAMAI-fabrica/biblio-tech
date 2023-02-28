@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
-const options = {
-    discriminatorKey : 'role',
-    timestamps:true 
-    
-}
+// const options = {
+//     discriminatorKey : 'role',
+//     timestamps:true 
+// }
 const userSchema = new Schema({
     name:{
         type:String,
@@ -29,9 +28,13 @@ const userSchema = new Schema({
     adders:{
         type:String,
         required:true
+    },
+    role:{
+        type:String,
+        enum: ['emploier', 'user'],
+        required:true
     }
   
-},options);
-
+});
 const User = model('User', userSchema);
 export default User;
