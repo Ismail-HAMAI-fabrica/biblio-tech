@@ -1,23 +1,26 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
-// const options = {
-//     discriminatorKey : 'role',
-//     timestamps:true 
-// }
+
 const bookSchema = new Schema({
     name:{
         type:String,
         required:true,
+        unique:true 
     },
-    auther:{
+    author:{
         type:String,
         required:true,
     },
-    disponibility:{
+    category:{
+        type: String,
+        enum:['Adventure','Classics','Horror','War','Crime','Romance'],
+        required: true
+    }, 
+    quantity:{
         type:Number,
-        enum: ['disponble', 'borrowed'],
         required:true,
+        min:0
     }
 });
-const Book = model('Book', BookSchema);
+const Book = model('Book', bookSchema);
 export default Book;
