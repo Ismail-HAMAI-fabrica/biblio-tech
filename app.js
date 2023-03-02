@@ -16,7 +16,7 @@ mongoose.set('strictQuery', true);
 //  login signin ++++++++++++++++++++++++++++++++++++++++++++++++++++
 app.post('/register',register);
 app.post('/login',login);
-app.get('/profil',validateToken,profil)
+app.get('/profil',validateToken,profil);
 
 
  //  CRUD de la librerai ++++++++++++++++++++++++++++++++++++++
