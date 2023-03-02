@@ -4,6 +4,7 @@ import cookieparser from 'cookie-parser';
 import {validateToken} from './JWT.js';
 import { login, register , profil } from './controllers/userscontrollers.js'
 import { addBook, deleteBook, findBookByauthor, findBookBycatgory, findBookByName, findcontityByName } from './controllers/bookcontrollers.js';
+import { borrow } from './controllers/borrowcontrollers.js';
 const app=express();
 
 
@@ -31,6 +32,9 @@ app.get('/profil',validateToken,profil);
  app.post('/books/findbyname',findBookByName);
  app.post('/books/findbyauthor',findBookBycatgory);
  app.post('/books/findbycatgory',findBookByauthor); 
+
+//  borrow books
+ app.post('/borrow/:id',borrow);
 
 
 
