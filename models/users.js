@@ -14,17 +14,14 @@ const userSchema = new Schema({
         required:true,
     },
     username:{
-        type:String,
-        required:true,
+        type:String, 
+        required:true, 
         unique : true
     },
     password:{
         type:String,
         required:true
-    },  email:{
-        type:String,
-        required:true
-    },
+    }, 
     adders:{
         type:String,
         required:true
@@ -33,6 +30,11 @@ const userSchema = new Schema({
         type:String,
         enum: ['emploier', 'user'],
         required:true
+    },
+    bookborrowed:{
+        type:Number,
+        required:true,
+        min:0
     }
   
 });

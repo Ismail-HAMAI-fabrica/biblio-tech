@@ -1,6 +1,9 @@
 import  express   from 'express';
 import mongoose from 'mongoose';
-import { addBook, deleteBook, findBookByName, findcontityByName } from './controllers/bookcontrollers.js';
+import cookieparser from 'cookie-parser';
+import {validateToken} from './JWT.js';
+import { login, register , profil } from './controllers/userscontrollers.js'
+import { addBook, deleteBook, findBookByauthor, findBookBycatgory, findBookByName, findcontityByName } from './controllers/bookcontrollers.js';
 const app=express();
 
 
@@ -9,6 +12,12 @@ mongoose.set('strictQuery', true);
 
  app.use(express.json());
  app.use(express.urlencoded({extended:true}));
+ app.use(cookieparser());
+//  login signin ++++++++++++++++++++++++++++++++++++++++++++++++++++
+app.post('/register',register);
+app.post('/login',login);
+app.get('/profil',validateToken,profil)
+
 
  //  CRUD de la librerai ++++++++++++++++++++++++++++++++++++++
 
@@ -20,9 +29,8 @@ mongoose.set('strictQuery', true);
  
 //  find book by name ++++++++++++++++++
  app.post('/books/findbyname',findBookByName);
- app.post('/books/findbyauthor',findBookByName);
- app.post('/books/findbycatgory',findBookByName);
- app.post('/books/find',findBookByName);
+ app.post('/books/findbyauthor',findBookBycatgory);
+ app.post('/books/findbycatgory',findBookByauthor); 
 
 
 
