@@ -1,5 +1,6 @@
 import Book from "../models/book.js";
 
+
 // get all books
 export const getAllBooks = async (req, res) => {
   const books = await Book.find();
@@ -14,6 +15,11 @@ export const findcontityByName = async (req, res) => {
   };
 // add book
 export const addBook = async (req, res) => {
+  const role=req.user.role
+  console.log(role)
+  if (role !== "emploier"){
+    res.status(404).json("error")
+  }
   const { name, author, category , quantity } = req.body;
   const book = await Book.create({ name, author ,category ,quantity });
   

@@ -22,16 +22,16 @@ app.get('/profil',validateToken,profil);
 
  //  CRUD de la librerai ++++++++++++++++++++++++++++++++++++++
 
- app.post('/books/add',addBook); 
- app.delete('/books/delet/:id',deleteBook);
- app.post('/books/findcatigory',findcontityByName);  
+ app.post('/books/add',validateToken,addBook);  
+ app.delete('/books/delet/:id',validateToken,deleteBook);
+ app.post('/books/findcatigory',validateToken,findcontityByName);  
  
  
  
 //  find book by name ++++++++++++++++++
- app.post('/books/findbyname',findBookByName);
- app.post('/books/findbyauthor',findBookBycatgory);
- app.post('/books/findbycatgory',findBookByauthor); 
+ app.post('/books/findbyname',validateToken,findBookByName);
+ app.post('/books/findbyauthor',validateToken,findBookBycatgory);
+ app.post('/books/findbycatgory',validateToken,findBookByauthor); 
 
 //  borrow books
  app.post('/borrow/:id',borrow);
