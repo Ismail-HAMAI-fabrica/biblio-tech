@@ -16,9 +16,8 @@ export const findcontityByName = async (req, res) => {
 // add book
 export const addBook = async (req, res) => {
   const role=req.user.role
-  console.log(role)
   if (role !== "emploier"){
-    res.status(404).json("error")
+    res.status(404).json("not user")
   }
   const { name, author, category , quantity } = req.body;
   const book = await Book.create({ name, author ,category ,quantity });

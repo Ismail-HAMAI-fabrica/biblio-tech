@@ -5,6 +5,7 @@ import {validateToken} from './JWT.js';
 import { login, register , profil } from './controllers/userscontrollers.js'
 import { addBook, deleteBook, findBookByauthor, findBookBycatgory, findBookByName, findcontityByName } from './controllers/bookcontrollers.js';
 import { borrow } from './controllers/borrowcontrollers.js';
+import { addcomment } from './controllers/commentercontrollers.js';
 const app=express();
 
 
@@ -35,6 +36,8 @@ app.get('/profil',validateToken,profil);
 
 //  borrow books
  app.post('/borrow/:id',borrow);
+// commenter
+app.post('/addcomment',addcomment);
 
 
 

@@ -15,9 +15,9 @@ export const validateToken = (req , res , next) =>{
             const ValidateToken = jwt.verify(accessToken,"jwtsucretcode")
         
             if(ValidateToken){
-                    const {role, id} = ValidateToken
+                    const {username,role, id} = ValidateToken
                     req.authenticated = true
-                    req.user = {role,id}
+                    req.user = {username,role,id}
                     return next()
             }
     }
