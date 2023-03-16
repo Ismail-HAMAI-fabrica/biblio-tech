@@ -58,6 +58,12 @@ export const findBookByauthor = async (req, res) => {
     const books = await Book.find({ author });
     res.json(books);
     };
-
+export const bookstat = async (req,res) =>{
+  const role=req.user.role
+  if (role !== "user"){
+    res.status(404).json("you need to be emploie for geting the satates")
+  }
+  
+}
 
  

@@ -73,5 +73,5 @@ export const expenddate = async (req,res)=>{
   goog.dateexp =goog.dateexp.getTime() +  864000000
   await goog.save()
   console.log(goog.dateexp)
-  res.json('hmlah')
+  res.json('your borrow has ben extended')
 }
