@@ -17,7 +17,7 @@ export const findcontityByName = async (req, res) => {
 export const addBook = async (req, res) => {
   const role=req.user.role
   if (role !== "emploier"){
-    res.status(404).json("not user")
+    res.status(404).json("not emploier you can't add book")
   }
   const { name, author, category , quantity } = req.body;
   const book = await Book.create({ name, author ,category ,quantity });
@@ -26,6 +26,10 @@ export const addBook = async (req, res) => {
 };
 // delet a book
 export const deleteBook = async (req, res) => {
+  const role=req.user.role
+  if (role !== "user"){
+    res.status(404).json("not emploier you can't add book")
+  }
   const bookId = req.params.id;
   await Book.findByIdAndDelete(bookId);
   res.json({ message: "Book deleted successfully" });

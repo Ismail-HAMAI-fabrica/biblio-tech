@@ -22,5 +22,6 @@ const commenterschema = new Schema({
     }
    
 });
+
 const Commenter = model('comment', commenterschema);
 export default Commenter;

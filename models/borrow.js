@@ -18,8 +18,14 @@ const borrowSchema = new Schema({
         type: Date, 
         default: Date.now ,
         required:true,
-    }
+    },
+    dateexp:{
+        type: Date,
+        default: function() {
+          return new Date().getTime() + 1296000000;
+        }
+      }
     
-});
+}); 
 const Borrow = model('Borrow', borrowSchema);
 export default Borrow;

@@ -4,8 +4,10 @@ import cookieparser from 'cookie-parser';
 import {validateToken} from './JWT.js';
 import { login, register , profil } from './controllers/userscontrollers.js'
 import { addBook, deleteBook, findBookByauthor, findBookBycatgory, findBookByName, findcontityByName } from './controllers/bookcontrollers.js';
-import { borrow } from './controllers/borrowcontrollers.js';
-import { addcomment } from './controllers/commentercontrollers.js';
+import { borrow, borrowhistorique, expenddate } from './controllers/borrowcontrollers.js';
+import { addcomment, deletecomment } from './controllers/commentercontrollers.js';
+import { addreply } from './controllers/replycontrollers.js';
+import { bultan } from './controllers/notecontroller.js';
 const app=express();
 
 
@@ -35,9 +37,20 @@ app.get('/profil',validateToken,profil);
  app.post('/books/findbycatgory',validateToken,findBookByauthor); 
 
 //  borrow books
- app.post('/borrow/:id',borrow);
+ app.post('/borrow/:id',validateToken,borrow);
 // commenter
-app.post('/addcomment',addcomment);
+app.post('/addcomment/:id',validateToken,addcomment);
+app.delete('/delitecomment/:id',validateToken,deletecomment);
+// reply
+app.post('/addreply/:id',validateToken,addreply);
+// historique
+app.post('/historique',validateToken,borrowhistorique);
+
+
+// test ++++++++++++++++++++++++++++++
+app.post('/bultan',validateToken,bultan);
+// expendate
+app.post('/expand/:id',validateToken,expenddate);
 
 
 
